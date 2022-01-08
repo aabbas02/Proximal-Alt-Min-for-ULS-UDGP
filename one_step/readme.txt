@@ -1,1 +1,1 @@
-This folder contains the file to implement the algorithm in https://proceedings.mlr.press/v119/zhang20n.html
+This folder contains the code to implement the algorithm in https://proceedings.mlr.press/v119/zhang20n.html
