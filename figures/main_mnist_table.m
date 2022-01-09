@@ -1,4 +1,4 @@
-% download  MNIST "train set" from https://pjreddie.com/projects/mnist-in-csv/
+% download  MNIST "train set" from https://pjreddie.com/projects/mnist-in-csv/ and place it in the datasets folder
 str = pwd;
 k   = strfind(str,'\');
 str = str(1:k(end));
