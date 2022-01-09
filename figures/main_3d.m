@@ -85,7 +85,7 @@ set(gca,'FontSize',13)
 xlabel('Noise variance $\log_{10} \sigma^2$','interpreter','Latex','Fontsize',17);
 %ylabel('$\frac{||\mathbf{x^}* - \hat{\mathbf{x}}||}{||\mathbf{x}||}$','interpreter','Latex','Fontsize',19)
 ax = gca;
-%exportgraphics(ax,'udgp.png','Resolution',300) 
+%exportgraphics(ax,'udgp.png','Resolution',300)  
 saveas(gcf,'udgp_2.fig')
 
 
