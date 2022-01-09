@@ -16,7 +16,7 @@ function [pi_hat] =  lp_ls_alt_min_prox_udgp(B,Y,n,lbd)
     pi_hat = eye(n*(n-1)/2);
     energy = 1e-5;
     lbd_ls = sqrt(lbd);
-    while(norm ( norm(Y - (pi_hat*Y_hat),'fro') - energy,'fro')/energy > 1e-2) 
+    while(norm(Y - (pi_hat*Y_hat),'fro')/energy < 99e-2) 
         X_old        = X_hat;
         pi_old       = pi_hat;
         energy       = norm(Y - (pi_hat*Y_hat),'fro');

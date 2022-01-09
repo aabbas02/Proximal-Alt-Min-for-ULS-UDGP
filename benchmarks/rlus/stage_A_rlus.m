@@ -45,11 +45,17 @@ function [pi_lp] =  stage_A_rlus(B,Y,r)
         idx_Y(num_iter+1)= q_star;
         k_star=idx_K(i_star);
         blk_idx=(k_star-1)*r+1:k_star*r;
-        if( length(intersect( blk_idx,idx_B) ) ==  r-1) %%%extra zeros do not matter in intersection
-            idx_K(i_star) = [];                         %r-1 equations learnt from block#k_star --> remove block# k_star at idx(k_i)
+        if( length(intersect( blk_idx,idx_B) ) ==  r-1)   %%%extra zeros do not matter in intersection
+            idx_K(i_star) = [];                           %r-1 equations learnt from block#k_star --> remove block# k_star at idx(k_i)
         end
         num_iter = num_iter + 1;
     end
-    X_hat = B_tilde\Y_tilde;
-    [pi_lp] = linear_prog_rlus(r,B*X_hat,Y);            %solves min_P ||Y - P Y_hat ||_2^2, used to intialize FW in stage B
+    X_hat = B_tilde \ Y_tilde;
+    Y_hat = B*X_hat;
+    pi_lp = zeros(n);
+    for i = 1 : n/r
+         c = (Y((i-1)*r+1:i*r,:)*...
+              Y_hat((i-1)*r+1:i*r,:)');
+         pi_lp((i-1)*r+1:i*r,(i-1)*r+1:i*r) =  proj_r_by_r(-c); 
+    end
 end

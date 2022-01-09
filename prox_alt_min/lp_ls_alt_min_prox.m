@@ -13,7 +13,7 @@ function [energy,pi_hat] =  lp_ls_alt_min_prox(B,Y,r,lbd)
     pi_hat = ones(n,n)/r;
     energy = 1e10;
     lbd_ls = sqrt(lbd);
-    while(norm(Y - (pi_hat*Y_hat),'fro') < energy-1e-3) 
+    while(norm(Y - (pi_hat*Y_hat),'fro')/energy < 99e-2) 
         X_old        = X_hat;
         pi_old       = pi_hat;
         energy       = norm(Y - (pi_hat*Y_hat),'fro');
