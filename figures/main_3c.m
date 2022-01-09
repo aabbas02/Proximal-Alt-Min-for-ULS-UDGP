@@ -47,4 +47,4 @@ set(gca,'xticklabels',m_)
 xlabel('$m$','Interpreter','Latex','Fontsize',15)
 ylabel('$n$','Interpreter','Latex','Fontsize',15)
 colorbar
-title('Fraction Hamming distortion $d_H/n$','Interpreter','Latex','Fontsize',15)
+title('Fraction Hamming distortion $d_H/n$','Interpreter','Latex','Fontsize',15) 
