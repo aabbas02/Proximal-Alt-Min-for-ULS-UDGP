@@ -57,7 +57,7 @@ function [x] = load_yale_compressed(num_faces)
     for i = 1 : num_faces*64
        x_(1:48,1:42) = faces(i,1:2:96,1:2:84);
        x(:,i) = reshape(x_,48*42,1);
-    end
+    end 
 end
 
 
