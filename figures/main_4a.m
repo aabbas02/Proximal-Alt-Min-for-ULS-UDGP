@@ -56,7 +56,7 @@ function [x] = load_yale_compressed
     for i = 1 : 128 
        x_(1:48,1:42) = faces(i,1:2:96,1:2:84); %down sample by 2x2
        x(:,i) = reshape(x_,2016,1);
-    end
+    end 
 end
 
 
