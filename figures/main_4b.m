@@ -27,7 +27,7 @@ for j = 1 : length(r_)
                plot_img(Y_permuted)               
                [energy,pi_lp]    = lp_ls_alt_min_prox(B,Y_permuted,r,lbd);
                d_H              = sum(sum(pi_ ~= pi_lp))/2;
-               %title('Reconstructed')
+               %title('Reconstructed') 
                axes(ha(3));
                plot_img(pi_lp'*Y_permuted)
         end
