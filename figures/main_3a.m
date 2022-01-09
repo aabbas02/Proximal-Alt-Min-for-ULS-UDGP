@@ -65,7 +65,7 @@ for j = 1 : length(r_)
                 [~,pi_lp]          = lp_ls_alt_min_prox(B,Y_permuted_noisy,r,lbd);
                 toc(t_alt_min)
                 d_H                = sum(sum(pi_ ~= pi_lp))/(2*n);
-                d_H_alt_min(j)     = d_H + d_H_alt_min(j);
+                d_H_alt_min(j)     = d_H + d_H_alt_min(j); 
     end
     j
 end
