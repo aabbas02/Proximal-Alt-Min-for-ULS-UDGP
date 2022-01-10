@@ -42,4 +42,4 @@ MATLAB code for the graph matching algorithm [1] and proximal alternating minimi
 
 ## Feedback
 
-Email your feedback to <a href="mailto:ahmed.abbasi@tufts.edu">Ahmed Abbasi</a>.
+Please email any feedback to <a href="mailto:ahmed.abbasi@tufts.edu">Ahmed Abbasi</a>.
