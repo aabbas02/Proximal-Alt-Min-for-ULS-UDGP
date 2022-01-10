@@ -12,7 +12,7 @@ MATLAB code for a graph matching algorithm [1] and fast proximal alternating min
  
 
 ## List of data files tested
-* `Cropped Yale Dataset`: The dataset is contained in the file `yale_compressed.mat` in the `datasets` folder. The variable `faces` of dimension 2414x96x84 contains 2414 images of dimension 96x84. 64 consecutive images are of the same face under different poses. 
+* `Cropped Yale Dataset`: The dataset used for experiments in `Figure 4(a)` and `Table 1`is contained in the file `yale_compressed.mat` in the `datasets` folder. The variable `faces` of dimension 2414x96x84 contains 2414 images of dimension 96x84. 64 consecutive images are of the same face under different poses. 
 * `MNIST`: The MNIST dataset used for the experiments in `Figure 4(b)` and `Table 1` is contained in the file "train set" at [URL](https://pjreddie.com/projects/mnist-in-csv/). The dataset comprises 60,000 images, each of which is represented as a 785-dimensional column vector in a matrix of dimension 60,000 x 785.  Each column vector comprises the image label (1) and the image pixeIs (2:785). In order to reproduce the results in Figure 4(b) and Table 1, download the train set and place it in the `datasets` folder.
 
 
