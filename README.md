@@ -1,6 +1,6 @@
 # Algorithms for r-local unlabeled sensing
 
-MATLAB code for the graph matching algorithm [1] and proximal alternating minimization algorithm [2] for the unlabeled sensing (ULS) problem. The algorithms are applied to the case when the unknown permutation is r-local. These codes were written by Ahmed Ali Abbasi as part of a larger research project on ULS, and count towards the partial fulfilment of research requirement for the PhD program at ECE department, Tufts University. The code was checked by Professor [Abiy Tasissa](http://sites.tufts.edu/atasissa/) and Professor  [Shuchin Aeron](http://www.ece.tufts.edu/~shuchin/). 
+MATLAB code for the graph matching algorithm [1] and proximal alternating minimization algorithm [2] for the unlabeled sensing (ULS) problem. The algorithms are applied to the case when the unknown permutation is r-local. This code was written by Ahmed Ali Abbasi as part of a larger research project on ULS, and count towards the partial fulfilment of research requirement for the PhD program at ECE department, Tufts University. The code was checked by Professor [Abiy Tasissa](http://sites.tufts.edu/atasissa/) and Professor  [Shuchin Aeron](http://www.ece.tufts.edu/~shuchin/). 
 
 ## Instructions
 
