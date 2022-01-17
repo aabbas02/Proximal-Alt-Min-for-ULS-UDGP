@@ -2,7 +2,7 @@ str = pwd;
 k   = strfind(str,'\');
 str = str(1:k(end));
 cd (str)
-addpath('misc','prox_alt_min','datasets') 
+addpath('code\misc','code\prox_alt_min','code\datasets') 
 clc
 close all;
 MC              = 1;
@@ -37,7 +37,7 @@ for j = 1 : length(r_)
     end
 end
 p_SNR = 10*log10(1/(norm(Y/max(Y) - pi_lp'*Y_permuted/max(Y_permuted),'fro')^2/n))
-fig = gcf;
+%fig = gcf;
 %exportgraphics(fig,'yale.png','Resolution',300) 
 function [data,B] = get_pca_col_yale(r)
     [data] = load_yale_compressed;

@@ -1,5 +1,5 @@
 % download  MNIST "train set" from https://pjreddie.com/projects/mnist-in-csv/
-addpath('datasets','prox_alt_min','misc')
+addpath('code\datasets','code\prox_alt_min','code\misc')
 clc
 close all;
 MC              = 1;
@@ -34,7 +34,7 @@ for j = 1 : length(r_)
     end
 end
 p_SNR = 10*log10(1/ ( norm(Y/max(Y) - pi_lp'*Y_permuted/max(Y_permuted),'fro')^2/n))
-fig = gcf;
+%fig = gcf;
 %exportgraphics(fig,'mnist.png','Resolution',300) 
 function plot_img(img)
    % imshow(reshape(round(img),[192,168]),[0,255]);

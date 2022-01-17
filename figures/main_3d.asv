@@ -5,8 +5,8 @@ cd (str)
 addpath('code\misc','code\udgp') 
 clc
 close all;
-MC              = 5;
-sigma_          = [-3 -2 -1 0 1 2];
+MC              = 25;
+sigma_          = [-3 -2.5 -2 -1.5 -1.0 -0.5 -0.1 -0.01];
 sigma_          = 10.^(sigma_);
 d               = 50;
 n               = d;

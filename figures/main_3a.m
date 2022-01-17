@@ -1,16 +1,17 @@
+clc
+close all;
+clear all
 str = pwd;
 k   = strfind(str,'\');
 str = str(1:k(end));
 cd (str)
-addpath('misc',...
-        'prox_alt_min',...
-        'benchmarks\rlus',...
-        'benchmarks\biconvex',...
-        'benchmarks\one_step',...
-        'benchmarks\levsort') 
-clc
-close all;
-clear all
+addpath('code\misc',...
+        'code\prox_alt_min',...
+        'code\benchmarks\rlus',...
+        'code\benchmarks\biconvex',...
+        'code\benchmarks\one_step',...
+        'code\benchmarks\levsort') 
+
 MC              = 5;
 SNR             = 1000;
 d               = 20;
@@ -38,9 +39,9 @@ for j = 1 : length(r_)
                 Y_permuted       = pi_*Y;
                 Y_permuted_noisy = Y_permuted + W;
 				%---rlus  https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9440727 
-                t1_start = tic;
+                %t1_start = tic;
                 [pi_fw]        = rlus(B,Y_permuted_noisy,r);
-                toc(t1_start)
+                %toc(t1_start)
                 d_H            = sum(sum(pi_ ~= pi_fw))/(2*n);
                 d_H_rlus(j)    = d_H + d_H_rlus(1,j);
 				%---biconvex https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8849447
@@ -61,9 +62,9 @@ for j = 1 : length(r_)
                 pi_lev             = levsort(B,Y_permuted_noisy,r);
                 d_H_levsort(j)     = d_H_levsort(j) + sum(sum(pi_ ~= pi_lev))/(2*n);                   
 				%---alt-min/proposed
-                t_alt_min = tic;
+                %t_alt_min = tic;
                 [~,pi_lp]          = lp_ls_alt_min_prox(B,Y_permuted_noisy,r,lbd);
-                toc(t_alt_min)
+                %toc(t_alt_min)
                 d_H                = sum(sum(pi_ ~= pi_lp))/(2*n);
                 d_H_alt_min(j)     = d_H + d_H_alt_min(j); 
     end
@@ -100,6 +101,6 @@ title(['$n = $ ',num2str(n), ' $ m = $ ', num2str(m), ' $ d = $ ', num2str(d),..
         ' SNR $ = $' , num2str(SNR)],...
         'interpreter','Latex','Fontsize',15)
 set(gca,'FontSize',18)
-ax = gca;
-exportgraphics(ax,'benchmarks.png','Resolution',300) 
-saveas(gcf,'benchmarks.fig')
+%ax = gca;
+%exportgraphics(ax,'benchmarks.png','Resolution',300) 
+%saveas(gcf,'benchmarks.fig')

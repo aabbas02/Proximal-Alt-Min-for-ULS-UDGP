@@ -2,7 +2,7 @@ str = pwd;
 k   = strfind(str,'\');
 str = str(1:k(end));
 cd (str)
-addpath('misc','prox_alt_min') 
+addpath('code\misc','code\prox_alt_min') 
 clc
 close all;
 clear all
@@ -61,6 +61,6 @@ title(['$n = $ ',num2str(n),  ' $ d = $ ', num2str(d),...
         ' SNR $ = $' , num2str(SNR)],...
         'interpreter','Latex','Fontsize',15)
 set(gca,'FontSize',18)
-ax = gca;
-exportgraphics(ax,'n_1000_d_100_r_100.png','Resolution',300) 
-saveas(gcf,'n_1000_d_100.fig')
+%ax = gca;
+%exportgraphics(ax,'n_1000_d_100_r_100.png','Resolution',300) 
+%saveas(gcf,'n_1000_d_100.fig')
