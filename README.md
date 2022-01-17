@@ -8,7 +8,7 @@ MATLAB code for the graph matching algorithm [1] and proximal alternating minimi
 
 * To reproduce any of the results in [2], run the corerresponding file in the `figures` folder. For example, to reproduce Figure 3(a), run `main_3a.m`.
 
-* For linux systems, replace ' \ ' in the main.m files in the `figures` folder by ' / '. These replacements need to be made in line 2 (all main files) and line 5 (main_3a.m only). 
+* For linux systems, replace ' \ ' in the main.m files in the `figures` folder by ' / '. These replacements need to be made in line 2 and line 5.
  
 
 ## List of data files tested
