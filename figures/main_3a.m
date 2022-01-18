@@ -12,11 +12,11 @@ addpath('code\misc',...
         'code\benchmarks\one_step',...
         'code\benchmarks\levsort') 
 
-MC              = 5;
+MC              = 15;
 SNR             = 1000;
 d               = 20;
 m               = 20;
-r_              = [2 5 10 20 25 40];
+r_              = [2 5 10 20 25 40 50];
 n               = 200;
 d_H_levsort     = zeros(1,length(r_));
 d_H_one_step    = zeros(1,length(r_));
@@ -46,7 +46,8 @@ for j = 1 : length(r_)
                 d_H_rlus(j)    = d_H + d_H_rlus(1,j);
 				%---biconvex https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8849447
 				d_H_min = 1;
-                for i = 1 : length(rho_) % cross validate across rho paramter
+                %for i = 1 : length(rho_) % cross validate across rho paramter
+                for i = 1 : 1
                    rho              = rho_(i);
                    [pi_lp]          = admm(B,Y_permuted_noisy,r,rho);
                    d_H_             = sum(sum(pi_ ~= pi_lp))/(2*n);

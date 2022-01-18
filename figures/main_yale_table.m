@@ -2,7 +2,7 @@ str = pwd;
 k   = strfind(str,'\');
 str = str(1:k(end));
 cd (str)
-addpath('code\misc','code\prox_alt_min','code\datasets') 
+addpath('code\misc','code\prox_alt_min','datasets') 
 clc
 close all;
 MC              = 1;

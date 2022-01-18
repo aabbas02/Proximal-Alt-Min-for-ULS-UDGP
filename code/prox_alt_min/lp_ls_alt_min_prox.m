@@ -8,8 +8,9 @@ function [energy,pi_hat] =  lp_ls_alt_min_prox(B,Y,r,lbd)
         B_tilde(i,:) = sum(B( (i-1)*r+1:i*r,: ) );
         Y_tilde(i,:) = sum(Y( (i-1)*r+1:i*r,: ) );
     end
-    X_hat = B_tilde\Y_tilde;
-    Y_hat = B*(X_hat);
+    %X_hat = B_tilde\Y_tilde;
+    X_hat = pinv(B_tilde)*Y_tilde;
+    Y_hat = B*X_hat;
     pi_hat = ones(n,n)/r;
     energy = 1e10;
     lbd_ls = sqrt(lbd);

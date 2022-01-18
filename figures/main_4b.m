@@ -1,5 +1,5 @@
 % download  MNIST "train set" from https://pjreddie.com/projects/mnist-in-csv/
-addpath('code\datasets','code\prox_alt_min','code\misc')
+addpath('datasets','code\prox_alt_min','code\misc')
 clc
 close all;
 MC              = 1;

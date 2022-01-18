@@ -3,7 +3,7 @@ str = pwd;
 k   = strfind(str,'\');
 str = str(1:k(end));
 cd (str)
-addpath('code\misc','code\prox_alt_min','code\datasets') 
+addpath('code\misc','code\prox_alt_min','datasets') 
 clc
 close all;
 clear all;
@@ -13,7 +13,7 @@ r               = 49;
 num_digits      = 10;
 lbd             = 100;
 d               = 5;
-num_eg          = 200;
+num_eg          = 1000;
 table           = zeros(2,num_digits*num_eg); % proposed,ojsp,admm
 [Y_all,labels]  = get_pca_col(); 			  % each column is data point
 pi_ = make_r_local_permutation(n,r);
