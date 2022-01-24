@@ -11,7 +11,7 @@ function [pi_hat] =  lp_ls_alt_min_prox_udgp(B,Y,n,lbd)
     end
     B_tilde(length(r_),:)= B(end,:);
     Y_tilde(length(r_),:)= Y(end,:);
-    X_hat = B_tilde\Y_tilde;
+	X_hat = pinv(B_tilde)*Y_tilde;
  	Y_hat = B*(B_tilde\Y_tilde);
     pi_hat = eye(n*(n-1)/2);
     energy = 1e10;
