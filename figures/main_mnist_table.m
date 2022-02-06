@@ -5,7 +5,7 @@ str = pwd;
 k   = strfind(str,'\');
 str = str(1:k(end));
 cd (str)
-addpath('code\misc','code\prox_alt_min','datasets') 
+addpath('datasets','code\prox_alt_min','code\misc','code\benchmarks\rlus')
 clc
 close all;
 clear all;
