@@ -5,8 +5,10 @@ cd (str)
 addpath('code\misc','code\udgp') 
 clc
 close all;
-MC              = 5;
-sigma_          = [-3 -2 -1 0 1 2];
+MC              = 15;
+%sigma_          = [-3 -2 -1 0 1 2];
+%sigma_          = linspace(-1,1,10);
+sigma_          = [-1 -0.5 0 0.5 1];
 sigma_          = 10.^(sigma_);
 d               = 50;
 n               = d;
@@ -55,6 +57,7 @@ for i = 1 : length(sigma_)
                 err(t,i)  = err(t,i) + norm(x_hat-x)/norm(x);
                 %k
     end
+    i
 end
 end
 err = err/MC;
@@ -75,18 +78,18 @@ xticks = log10(sigma_);
 yticks = cat(2,err(1,:),err(2,:),err(3,:));
 yticks =  0.2*round(yticks/0.2);
 yticks = unique(yticks);
-set(gca, 'XTick', xticks, 'XTickLabel', xticks,'Fontsize',9);
-set(gca, 'YTick', yticks, 'YTickLabel', yticks,'Fontsize',9);
+set(gca, 'XTick', xticks, 'XTickLabel', xticks,'Fontsize',14);
+set(gca, 'YTick', yticks, 'YTickLabel', yticks,'Fontsize',14);
 grid('on');
 Lgnd =  legend('show');
 set(Lgnd, 'Interpreter','Latex','Fontsize',15,'Location','Northwest');
 title('Reconstruction error uDGP, $d = 50$ points','interpreter','Latex')
 ylabel('$\frac{||\mathbf{x^*} - \hat{\mathbf{x}}||}{||\mathbf{x}||}$','interpreter','Latex')
-set(gca,'FontSize',13)
+set(gca,'FontSize',19)
 xlabel('Noise variance $\log_{10} \sigma^2$','interpreter','Latex','Fontsize',17);
 %ylabel('$\frac{||\mathbf{x^}* - \hat{\mathbf{x}}||}{||\mathbf{x}||}$','interpreter','Latex','Fontsize',19)
-%ax = gca;
-%exportgraphics(ax,'udgp.png','Resolution',300)  
-%saveas(gcf,'udgp_2.fig')
+ax = gca;
+exportgraphics(ax,'udgp_1.pdf')
+saveas(gcf,'udgp_1.fig')
 
 

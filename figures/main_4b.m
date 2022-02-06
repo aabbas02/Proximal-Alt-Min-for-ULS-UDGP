@@ -20,22 +20,20 @@ for j = 1 : length(r_)
                Y   = Y(:,125);
                pi_ = make_r_local_permutation(n,r);
                axes(ha(1));
-               plot_img(Y)               %title('Straight Line')
+               plot_img(Y)               
                Y_permuted      = pi_*Y;
-               %title('Scrambled')
                axes(ha(2));
                plot_img(Y_permuted)               
                [energy,pi_lp]    = lp_ls_alt_min_prox(B,Y_permuted,r,lbd);
                d_H              = sum(sum(pi_ ~= pi_lp))/2;
-               %title('Reconstructed') 
                axes(ha(3));
                plot_img(pi_lp'*Y_permuted)
         end
     end
 end
 p_SNR = 10*log10(1/ ( norm(Y/max(Y) - pi_lp'*Y_permuted/max(Y_permuted),'fro')^2/n))
-%fig = gcf;
-%exportgraphics(fig,'mnist.png','Resolution',300) 
+fig = gcf;
+exportgraphics(fig,'mnist.pdf','Resolution',300) 
 function plot_img(img)
    % imshow(reshape(round(img),[192,168]),[0,255]);
    imshow(reshape(round(img),[28,28]),[0,255]);

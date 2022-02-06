@@ -43,7 +43,7 @@ xlabel('necessary SNR','interpreter','Latex','Fontsize',16)
 Lgnd =  legend('show');
 set(Lgnd, 'Interpreter','latex','Location','northeast','Fontsize',16)
 ax = gca;
-%exportgraphics(ax,'nec_snr.png','Resolution',300) 
+%exportgraphics(ax,'nec_snr.pdf','Resolution',300) 
 % https://en.wikipedia.org/wiki/Stirling%27s_approximation - Speed of convergence and error estimates
 function x =  stirling_function(n)
 x = n*log(n) - n + 0.5*log(2*pi*n) + (1/(12*n)) - (1/(360*n^3)) + 1/(1260*n^5) - 1/(1680*n^7);

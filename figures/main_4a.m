@@ -37,8 +37,8 @@ for j = 1 : length(r_)
     end
 end
 p_SNR = 10*log10(1/(norm(Y/max(Y) - pi_lp'*Y_permuted/max(Y_permuted),'fro')^2/n))
-%fig = gcf;
-%exportgraphics(fig,'yale.png','Resolution',300) 
+fig = gcf;
+exportgraphics(fig,'yale.pdf','Resolution',300) 
 function [data,B] = get_pca_col_yale(r)
     [data] = load_yale_compressed;
     data = data(:,1:64);

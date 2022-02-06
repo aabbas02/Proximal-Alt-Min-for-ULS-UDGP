@@ -51,10 +51,16 @@ function [pi_lp] =  stage_A_rlus(B,Y,r)
     end
     X_hat = B_tilde \ Y_tilde;
     Y_hat = B*X_hat;
-    pi_lp = zeros(n);
+    pi_lp = eye(n);
+    assignment = zeros(n,1);
     for i = 1 : n/r
+         start = (i-1)*r+1;
+         stop  = i*r;
          c = (Y((i-1)*r+1:i*r,:)*...
               Y_hat((i-1)*r+1:i*r,:)');
-         pi_lp((i-1)*r+1:i*r,(i-1)*r+1:i*r) =  proj_r_by_r(-c); 
+         temp = munkres(-c);
+         temp = start-1+temp;
+         assignment(start:stop) = temp;   
     end
+    pi_lp(1:n,:) = pi_lp(assignment,:);
 end

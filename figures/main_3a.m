@@ -11,13 +11,16 @@ addpath('code\misc',...
         'code\benchmarks\biconvex',...
         'code\benchmarks\one_step',...
         'code\benchmarks\levsort') 
-
-MC              = 15;
-SNR             = 1000;
-d               = 20;
-m               = 20;
-r_              = [2 5 10 20 25 40 50];
-n               = 200;
+MC              = 5;
+SNR             = 100;
+d               = 100;
+m               = 50;
+%r_              = [10 50 100 125 200];
+%r_              = [20 25 40 50 100 125];
+%r_              = [10 20 25 40 50 100];
+%r_              = [20 25 50 100 125 150];
+r_              = [20 25 40 50 100 125 200];
+n               = 1000;
 d_H_levsort     = zeros(1,length(r_));
 d_H_one_step    = zeros(1,length(r_));
 d_H_rlus        = zeros(1,length(r_));
@@ -46,8 +49,8 @@ for j = 1 : length(r_)
                 d_H_rlus(j)    = d_H + d_H_rlus(1,j);
 				%---biconvex https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8849447
 				d_H_min = 1;
-                %for i = 1 : length(rho_) % cross validate across rho paramter
-                for i = 1 : 1
+                for i = 1 : length(rho_) % cross validate across rho paramter
+                %for i = 1 : 1
                    rho              = rho_(i);
                    [pi_lp]          = admm(B,Y_permuted_noisy,r,rho);
                    d_H_             = sum(sum(pi_ ~= pi_lp))/(2*n);
@@ -55,19 +58,19 @@ for j = 1 : length(r_)
                       d_H_min = d_H_;
                    end
                 end
-                d_H_biconvex(j) = d_H_biconvex(j) + d_H_min;
+               d_H_biconvex(j) = d_H_biconvex(j) + d_H_min;
                 %---icml https://proceedings.mlr.press/v119/zhang20n.html
-                pi_icml            = icml_20(B,Y_permuted_noisy,r);
-                d_H_one_step(j)    = d_H_one_step(j) + sum(sum(pi_ ~= pi_icml))/(2*n);   
-                %---levsort  https://people.eecs.berkeley.edu/~courtade/pdfs/DenoisingLinearModels_ISIT2017.pdf
-                pi_lev             = levsort(B,Y_permuted_noisy,r);
-                d_H_levsort(j)     = d_H_levsort(j) + sum(sum(pi_ ~= pi_lev))/(2*n);                   
+               pi_icml            = icml_20(B,Y_permuted_noisy,r);
+               d_H_one_step(j)    = d_H_one_step(j) + sum(sum(pi_ ~= pi_icml))/(2*n);   
+               %---levsort  https://people.eecs.berkeley.edu/~courtade/pdfs/DenoisingLinearModels_ISIT2017.pdf
+               pi_lev             = levsort(B,Y_permuted_noisy,r);
+               d_H_levsort(j)     = d_H_levsort(j) + sum(sum(pi_ ~= pi_lev))/(2*n);                   
 				%---alt-min/proposed
-                %t_alt_min = tic;
-                [~,pi_lp]          = lp_ls_alt_min_prox(B,Y_permuted_noisy,r,lbd);
-                %toc(t_alt_min)
-                d_H                = sum(sum(pi_ ~= pi_lp))/(2*n);
-                d_H_alt_min(j)     = d_H + d_H_alt_min(j); 
+               %t_alt_min = tic;
+               [~,pi_lp]          = lp_ls_alt_min_prox(B,Y_permuted_noisy,r,lbd);
+               %toc(t_alt_min)
+               d_H                = sum(sum(pi_ ~= pi_lp))/(2*n);
+               d_H_alt_min(j)     = d_H + d_H_alt_min(j); 
     end
     j
 end
@@ -76,32 +79,40 @@ d_H_one_step     = d_H_one_step/MC;
 d_H_rlus         = d_H_rlus/MC;
 d_H_levsort      = d_H_levsort/MC;
 d_H_biconvex     = d_H_biconvex/MC;
-styles =["r-x","g-x","b-x","k-x","m-x","c-x"];
+styles =["c-diamond","g-x","b-s","m-*","k-x"];
 hold on;
-plot(r_,d_H_rlus,"g-x",...
-    'DisplayName','RLUS',...
-    'MarkerSize',11,'Linewidth',1.25);
-plot(r_,d_H_biconvex,styles(3),'DisplayName','Biconvex','MarkerSize',11,'Linewidth',1.25);
-plot(r_,d_H_levsort,styles(5),...
-    'DisplayName','Levsort',...
-    'MarkerSize',11,'Linewidth',1.25);
-plot(r_,d_H_one_step,styles(6),...
+plot(1:length(r_),d_H_one_step,styles(4),...
     'DisplayName','One-step',...
-    'MarkerSize',11,'Linewidth',1.25);
-plot(r_,d_H_alt_min,styles(4),...
+    'MarkerSize',11,'Linewidth',1.65);
+
+plot(1:length(r_),d_H_levsort,styles(3),...
+    'DisplayName','Levsort',...
+    'MarkerSize',11,'Linewidth',1.65);
+
+plot(1:length(r_),d_H_biconvex,styles(2),...
+     'DisplayName','Biconvex',...
+     'MarkerSize',11,'Linewidth',1.65);
+
+plot(1:length(r_),d_H_rlus,styles(1),...
+    'DisplayName','RLUS',...
+    'MarkerSize',11,'Linewidth',1.65);
+
+plot(1:length(r_),d_H_alt_min,styles(5),...
     'DisplayName','Poposed',...
-    'MarkerSize',11,'Linewidth',1.25);
-xticks = r_;
-set(gca, 'XTick', xticks, 'XTickLabel', xticks,'Fontsize',9);
+    'MarkerSize',11,'Linewidth',1.65);
+%xticks = r_;
+xticks = 1:length(r_);
+set(gca, 'XTick', xticks, 'XTickLabel', r_,'Fontsize',14);
 grid('on');
 xlabel('$r$','interpreter','Latex','Fontsize',14);
 ylabel('$d_H/n$','interpreter','Latex','Fontsize',14)
 Lgnd =  legend('show');
-set(Lgnd, 'Interpreter','Latex','Fontsize',12,'Location','Northwest')
+%set(Lgnd, 'Interpreter','Latex','Fontsize',12,'Location','Northwest')
+set(Lgnd, 'Interpreter','Latex','Fontsize',12)
 title(['$n = $ ',num2str(n), ' $ m = $ ', num2str(m), ' $ d = $ ', num2str(d),...
         ' SNR $ = $' , num2str(SNR)],...
-        'interpreter','Latex','Fontsize',15)
-set(gca,'FontSize',18)
-%ax = gca;
-%exportgraphics(ax,'benchmarks.png','Resolution',300) 
-%saveas(gcf,'benchmarks.fig')
+        'interpreter','Latex','Fontsize',16)
+set(gca,'FontSize',16)
+ax = gca;
+exportgraphics(ax,'benchmarks_111111111.pdf','Resolution',300) 
+saveas(gcf,'benchmarks_111111111.fig')
