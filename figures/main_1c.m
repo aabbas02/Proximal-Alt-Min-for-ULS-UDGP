@@ -20,7 +20,7 @@ for i = 1 : length(SNR_)
     H_k = stirling_function(n) - stirling_function(k);
     table(2,i) = 1 - ( 1 + (m*n/2)*(log2(1+SNR) ) )/H_r;
     table(1,i) = 1 - ( 1 + (m*n/2)*(log2(1+SNR) ) )/H_k;
-end
+end 
 figure; 
 hold on
 plot(SNR_,table(2,:),'r-*',...
