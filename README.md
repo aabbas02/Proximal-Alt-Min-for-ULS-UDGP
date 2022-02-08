@@ -8,12 +8,14 @@ MATLAB code for the graph matching algorithm [1] and the proximal alternating mi
 
 * To reproduce any of the results in [2], run the corerresponding file in the `figures` folder. For example, to reproduce Figure 3(a), run `main_3a.m`.
 
+* To reproduce MNIST results, i.e. the results in figure 4(b), table 1,  download the file "train set" at the link [MNIST](https://pjreddie.com/projects/mnist-in-csv/) and place it in folder `datasets`.
+
 * For linux systems, replace ' \ ' in the main.m files in the `figures` folder by ' / '. These replacements need to be made in line 2 and line 5.
  
 
 ## List of data files tested
 * `Cropped Yale Dataset`: The dataset used for experiments in `Figure 4(a)` and `Table 1` is contained in the file `yale_compressed.mat` in the `datasets` folder. The variable `faces` of dimension 2414x96x84 contains 2414 images of dimension 96x84. 64 consecutive images are of the same face under different poses. 
-* `MNIST`: The MNIST dataset used for the experiments in `Figure 4(b)` and `Table 1` is contained in the file "train set" at [URL](https://pjreddie.com/projects/mnist-in-csv/). The dataset comprises 60,000 images, each of which is represented as a 785-dimensional row vector in a matrix of dimension 60,000 x 785.  Each row vector comprises the image label (1) and the image pixeIs (2:785). In order to reproduce the results in Figure 4(b) and Table 1, download the train set and place it in the `datasets` folder.
+* `MNIST`: The MNIST dataset used for the experiments in `Figure 4(b)` and `Table 1` is contained in the file "train set" at the link [MNIST](https://pjreddie.com/projects/mnist-in-csv/). The dataset comprises 60,000 images, each of which is represented as a 785-dimensional row vector in a matrix of dimension 60,000 x 785.  Each row vector comprises the image label (1) and the image pixeIs (2:785). In order to reproduce the results in Figure 4(b) and Table 1, download the train set and place it in the `datasets` folder.
 
 
 
