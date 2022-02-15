@@ -13,16 +13,6 @@ function [pi_hat] = levsort(B,Y,r)
     [B,~,~] = svd(B,'econ');
 	pi_hat = eye(n);
     for i = 1:n/r
-        %c    = reshape(diag(Y((i-1)*r+1:i*r,:)*Y((i-1)*r+1:i*r,:)')*...
-        %               diag(B((i-1)*r+1:i*r,:)*B((i-1)*r+1:i*r,:)')'...
-        %                     ,[1,r^2]);
-        %c     = reshape( diag(Y((i-1)*r+1:i*r,:)*Y((i-1)*r+1:i*r,:)')*...
-        %                 diag(B((i-1)*r+1:i*r,:)*B((i-1)*r+1:i*r,:)')',...
-        %                 [1,r^2]);
-        %c    = reshape((Y((i-1)*r+1:i*r,:)*Y((i-1)*r+1:i*r,:)')*...
-        %               (B((i-1)*r+1:i*r,:)*B((i-1)*r+1:i*r,:)')'...
-        %                      ,[1,r^2]);
-        %temp = linprog(-c,[],[],A_eq,ones(2*r,1),zeros(r*r,1),[],options);
 		mu = diag( (B((i-1)*r+1:i*r,:)*B((i-1)*r+1:i*r,:)') );
 		nu = diag( (Y((i-1)*r+1:i*r,:)*Y((i-1)*r+1:i*r,:)') );
 		[~,temp1] = sort(mu);
@@ -30,7 +20,6 @@ function [pi_hat] = levsort(B,Y,r)
 		temp1 = (i-1)*r+temp1;
 		temp2 = (i-1)*r+temp2;
 		pi_hat(temp2,:) = pi_hat(temp1,:);
-        %pi_hat((i-1)*r+1:i*r,(i-1)*r+1:i*r) = reshape (temp,[r,r]);
     end
         
 end
