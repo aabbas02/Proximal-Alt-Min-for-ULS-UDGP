@@ -8,6 +8,7 @@ function [assignment,cost] = munkres(costMat)
 % problem represented by the COSTMAT, where the (i,j)th element represents the cost to assign the jth
 % job to the ith worker.
 %
+%
 % Partial assignment: This code can identify a partial assignment is a full
 % assignment is not feasible. For a partial assignment, there are some
 % zero elements in the returning assignment vector, which indicate
