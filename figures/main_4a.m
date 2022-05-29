@@ -23,7 +23,7 @@ for j = 1 : length(r_)
                Y   = Y(:,16); % draw random data point, in this case 16th column 
                pi_ = make_r_local_permutation(n,r);
                axes(ha(1));
-               plot_col_yale(Y)               %title('Straight Line')
+               plot_col_yale(Y)            
                Y_permuted      = pi_*Y;
                %title('Scrambled')
                axes(ha(2));
