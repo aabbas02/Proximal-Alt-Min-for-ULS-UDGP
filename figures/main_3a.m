@@ -109,6 +109,6 @@ title(['$n = $ ',num2str(n), ' $ m = $ ', num2str(m), ' $ d = $ ', num2str(d),..
         ' SNR $ = $' , num2str(SNR)],...
         'interpreter','Latex','Fontsize',16)
 set(gca,'FontSize',16)
-ax = gca;
-exportgraphics(ax,'benchmarks_111111111.pdf','Resolution',300) 
-saveas(gcf,'benchmarks_111111111.fig')
+%ax = gca;
+%exportgraphics(ax,'benchmarks_111111111.pdf','Resolution',300) 
+%saveas(gcf,'benchmarks_111111111.fig')
