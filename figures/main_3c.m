@@ -42,21 +42,6 @@ for i = 1 : length(n_)
 end
 err_X  = err_X/MC;
 err_Pi = err_Pi/MC;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 close all
 imagesc(flip(err_X))
 colormap(gray)
